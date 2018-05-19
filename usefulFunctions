@@ -1,0 +1,14 @@
+import struct
+
+def h2f(x): # hex to float converter
+	return struct.unpack('!f', x.replace(' ','').decode('hex'))[0]
+
+def f2h(f): # float to hex converter
+	return hex(struct.unpack('<I', struct.pack('<f', f))[0])
+
+def hexRead(x): # conver hex string to char string
+	y=''
+	x=x.replace(' ','') # remove blanks in hex string
+	for i in range(len(x)/2):
+		y += chr(int(x[i*2:(i+1)*2],16))
+return y
